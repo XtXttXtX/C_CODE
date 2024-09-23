@@ -11,6 +11,7 @@ void menu()
 }
 void game()
 {
+	char ret = 0;
 	//数据的存储是二维数组
 	char board[ROW][COL];
 	//初始化棋盘,将棋盘初始化为空格
@@ -21,18 +22,30 @@ void game()
 	{
 		//玩家下棋
 		PlayerMove(board,ROW,COL);
+		ret=CheckWin(board,ROW,COL);
+		if (ret != 'C')
+			break;
 		DisplayBoard(board, ROW, COL);
 		//检测输赢
 		//电脑赢了-'#'
 		//玩家赢了-'*'
 		//平局-'Q'
 		//游戏继续'C'
-		CheckWin();
+	
 
 		//电脑下棋(随机)
 		ComputerMove(board, ROW, COL);
+		ret = CheckWin(board, ROW, COL);
+		if (ret != 'C')
+			break;
 		DisplayBoard(board, ROW, COL);
 	}
+	if (ret == '#')
+		printf("电脑赢\n");
+	else if (ret == '*')
+		printf("玩家赢\n");
+	else if (ret == 'Q')
+		printf("平局\n");
 }
 int main()
 {

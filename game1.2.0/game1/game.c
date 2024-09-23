@@ -88,3 +88,45 @@ void ComputerMove(char board[ROW][COL], int row, int col)
 		
 	
 }
+int isFull(char board[ROW][COL], int row, int col)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < col; j++)
+		{
+			if (board[i][j] == ' ')
+				return 0;
+		}
+	}
+	return 1;
+}
+char CheckWin(char board[ROW][COL], int row, int col)
+{
+	int i = 0;
+	//判断行
+	for (i = 0; i < row; i++)
+	{
+		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][2] != ' ')
+			return board[i][0];
+	}
+	//判断列
+	for (i = 0; i < row; i++)
+	{
+		if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[2][i] != ' ')
+			return board[0][i];
+	}
+	//判断对角线
+	if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[2][2] != ' ')
+		return board[0][0];
+	if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[2][0] != ' ')
+		return board[0][2];
+	//平局
+	if (isFull(board,row,col) == 1)
+	{
+		return 'Q';
+	}
+	//游戏继续
+	return 'C';
+}
