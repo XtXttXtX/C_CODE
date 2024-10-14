@@ -50,6 +50,22 @@
 //	}
 //
 
+//引申题目
+//写一个代码，判断n是否为2^m次方
+//4-0100
+//8-1000
+//一定是只有一个1
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	if ((n&(n - 1)) == 0)
+		printf("YES");
+	else
+		printf("NO");
+	return 0;
+}
+
 //获取一个整数二进制序列中所有的偶数位和奇数位，分别打印出二进制序列
 //int main()
 //{
@@ -68,20 +84,45 @@
 //	return 0;
 //}
 
+//统计二进制中1的个数
+//int main()
+//{
+//	int x = 0;
+//	int i = 0;
+//	int count = 0;
+//	scanf("%d", &x);
+//	for (i = 1; i <= 32; i++)
+//	{
+//		if ((x >> i) & 1 == 1)
+//		{
+//			count++;
+//		}
+//	}
+//	printf("%d", count);
+//	return 0;
+//}
+//对代码进行优化
+//n=15
+//n=n&(n-1)
+//上面的表达式会使得n的二进制中最右边的1消失
+//1111 - n
+//1110 - n-1
+//1110 - n
+//1101 - n-1
+//1100
+
+//int main()
+//{
+//	int x = 0;
+//	int i = 0;
+//	int count = 0;
+//	scanf("%d", &x);
+//	while (x)
+//	{
+//		x = x&(x - 1);
+//		count++;
+//	}
 //
-int main()
-{
-	int x = 0;
-	int i = 0;
-	int count = 0;
-	scanf("%d", &x);
-	for (i = 1; i <= 32; i++)
-	{
-		if ((x >> i) & 1 == 1)
-		{
-			count++;
-		}
-	}
-	printf("%d", count);
-	return 0;
-}
+//	printf("%d", count);
+//	return 0;
+//}
